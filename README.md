@@ -30,7 +30,7 @@ You do **not** need to install Node.js or MongoDB manually.
 
 ### 1. **Clone the repository**
 
-      git clone https://github.com/gal-s2/Financial-Data-Viewer.git
+      git clone https://github.com/gal-s2/FinancialDataViewer.git
       cd Financial-Data-Viewer
 
 
