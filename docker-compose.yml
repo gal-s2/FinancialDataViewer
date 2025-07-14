@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+    mongo:
+        image: mongo:6
+        restart: always
+        ports:
+            - "27017:27017"
+        command: ["mongod", "--quiet"]
+        environment:
+            MONGO_INITDB_DATABASE: financial_data_viewer
+        volumes:
+            - mongo-data:/data/db
+
+    server:
+        build: ./Server
+        ports:
+            - "8000:8000"
+        environment:
+            - MONGO_URI=mongodb://mongo:27017/financial_data_viewer
+            - API_KEY=your_api_key_here
+            - PORT=8000
+        depends_on:
+            - mongo
+
+    client:
+        build: ./Client
+        ports:
+            - "5173:5173"
+        environment:
+            - VITE_API_URL=http://localhost:8000/api
+
+volumes:
+    mongo-data:
