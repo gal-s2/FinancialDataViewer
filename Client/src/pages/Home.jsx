@@ -28,7 +28,7 @@ function Home() {
             const response = await axios.get(URL(ticker));
             setCompany(response.data.company);
             setGrades(response.data.grades);
-            setHistoricalPrices(response.data.historicalPrices.reverse());
+            setHistoricalPrices(response.data.historicalPrices);
             setLoading(false);
         } catch (err) {
             setLoading(false);
